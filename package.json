@@ -17,13 +17,13 @@
     "boilerplate"
   ],
   "boilerplate-repos": {
-    "create-react-app": "https://www. github.com/facebookincubator/create-react-app.git",
-    "bones": "https://www. github.com/FullstackAcademy/bones.git",
+    "create-react-app": "https://www.github.com/facebookincubator/create-react-app.git",
+    "bones": "https://www.github.com/FullstackAcademy/bones.git",
     "react-redux-router-node": "https://github.com/chloerice/react-redux-router-node.git"
   },
   "proxy": "http://localhost:1337/",
   "scripts": {
-    "start": "concurrently \"npm start\" \"node scripts/start.js\"",
+    "start": "concurrently \"npm run serve-dev\" \"node scripts/start.js\"",
     "build": "node scripts/build.js",
     "test-react": "node scripts/test.js --env=jsdom",
     "dev": "node dev",
@@ -62,6 +62,7 @@
     "passport": "^0.3.2",
     "passport-linkedin": "^1.0.0",
     "passport-local": "^1.0.0",
+    "peer": "^0.2.8",
     "pg": "^6.1.0",
     "pretty-error": "^2.0.2",
     "react": "^15.3.2",
@@ -72,7 +73,8 @@
     "redux-devtools-extension": "^2.13.0",
     "redux-logger": "^3.0.1",
     "redux-thunk": "^2.1.0",
-    "sequelize": "^3.24.6"
+    "sequelize": "^3.24.6",
+    "socket.io": "^2.0.3"
   },
   "devDependencies": {
     "autoprefixer": "6.5.1",

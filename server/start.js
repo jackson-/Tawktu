@@ -90,6 +90,62 @@ if (module === require.main) {
       console.log(`Listening on http://${urlSafeHost}:${port}`)
     }
   )
+  // const PeerServer = require('peer').PeerServer
+  const Topics = require('./connect/Topics.js')
+  const io = require('socket.io').listen(server);
+
+  console.log('io listening: ', io.sockets.sockets);
+
+  io.sockets.on('connection', socket => {
+    let room = '';
+    const create = err => {
+      if(err){
+        return console.log('socket connection error: ', err);
+      }
+      socket.join(room);
+      socket.emit('create');
+    };
+    socket.on('message', message => {console.log(200, message);
+    socket.broadcast.to(room).emit('message', message)});
+    socket.on('find', () => {
+      const url = socket.request.headers.referer.split('/');
+      console.log('referer', url);
+      room = url[url.length - 1];
+      const sr = io.sockets.adapter.rooms[room];
+      if(sr === undefined) {
+        socket.join(room);
+        socket.emit(create);
+      }else if (sr.length === 1) {
+        socket.emit('join');
+      }else {
+        socket.emit('full', room);
+      }
+    })
+    socket.on('auth', data => {
+      data.sid = socket.id;
+      socket.broadcast.to(room).emit('approve', data);
+    })
+    socket.on('accept', id => {
+      io.sockets.connected[id].join(room);
+      io.in(room).emit('bridge');
+    })
+    socket.on('reject', () => socket.emit('full'));
+    socket.on('leave', () => {
+      socket.broadcast.to(room).emit('hangup');
+      socket.leave(room);
+    })
+  })
+//   const peerServer = new PeerServer({ port: 9000, path: '/chat' });
+//
+// peerServer.on('connection', function (id) {
+//   io.emit(Topics.USER_CONNECTED, id);
+//   console.log('User connected with #', id);
+// });
+//
+// peerServer.on('disconnect', function (id) {
+//   io.emit(Topics.USER_DISCONNECTED, id);
+//   console.log('User disconnected with #', id);
+// });
 }
 
 // This check on line 64 is only starting the server if this file is being run directly by Node, and not required by another file.
