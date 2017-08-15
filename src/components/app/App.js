@@ -28,6 +28,9 @@ const App = props => (
         <li className='navbar-item'>
           <NavLink to='/camera' isActive={onlyOneActiveMatch}>Camera View</NavLink>
         </li>
+        <li className='navbar-item'>
+          <NavLink to='/conference' isActive={onlyOneActiveMatch}>Conference</NavLink>
+        </li>
       </ul>
     </nav>
     { props.children && React.cloneElement(props.children, props) }

@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import CamView from './Camview'
+import About from './About'
 
 it('renders without crashing', () => {
   const div = document.createElement('div')
-  ReactDOM.render(<CamView />, div)
+  ReactDOM.render(<About />, div)
 })

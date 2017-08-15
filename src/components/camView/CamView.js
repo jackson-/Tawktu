@@ -2,9 +2,9 @@ import React from 'react'
 import './CamView.css'
 import { Button } from 'react-bootstrap'
 
-const About = props => (
-  <div className='About'>
-    <header className='About-header'>
+const CamView = props => (
+  <div className='CamView'>
+    <header className='CamView-header'>
       <h2>CamView</h2>
       <p>Enter Connect ID</p>
       <form onSubmit={props.joinRoom}>
@@ -16,4 +16,4 @@ const About = props => (
   </div>
 )
 
-export default About
+export default CamView

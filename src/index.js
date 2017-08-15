@@ -7,6 +7,7 @@ import Container from './components/app/App'
 import Home from './components/home/Home'
 import About from './components/about/About'
 import CamView from './components/camView/CamView'
+import Conference from './components/conference/Conference'
 import './index.css'
 import store from './store'
 
@@ -18,6 +19,7 @@ const App = () => (
           <Route exact strict path='/' component={Home} />
           <Route exact path='/about' component={About} />
           <Route exact path='/camera' component={CamView} />
+          <Route exact path='/conference' component={Conference} />
         </Switch>
       </Container>
     </Router>
