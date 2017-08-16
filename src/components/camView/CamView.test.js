@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import CamView from './Camview'
+import CamView from './CamView'
 
 it('renders without crashing', () => {
   const div = document.createElement('div')
