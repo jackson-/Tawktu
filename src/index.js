@@ -6,7 +6,8 @@ import { Provider } from 'react-redux'
 import Container from './components/app/App'
 import Home from './components/home/Home'
 import About from './components/about/About'
-import CamView from './components/camView/CamView'
+import CamViewContainer from './containers/camviewcontainer/CamViewContainer'
+import Room from './containers/roomcontainer/RoomContainer'
 import Conference from './components/conference/Conference'
 import './index.css'
 import store from './store'
@@ -18,7 +19,8 @@ const App = () => (
         <Switch>
           <Route exact strict path='/' component={Home} />
           <Route exact path='/about' component={About} />
-          <Route exact path='/camera' component={CamView} />
+          <Route path='room/:room' component={Room} />
+          <Route exact path='/camera' component={CamViewContainer} />
           <Route exact path='/conference' component={Conference} />
         </Switch>
       </Container>

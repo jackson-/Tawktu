@@ -1,10 +1,12 @@
-import { combineReducers } from 'redux'
-// just import your reducers as you want your state keys named and
-// add them to the combineReducers arguments
-import loading from './loadingReducer'
-
-const rootReducer = combineReducers({
-  loading
-})
-
-export default rootReducer
+import { combineReducers } from 'redux';
+// Reducers
+import roomReducer from './room-reducer';
+import audioReducer from './audio-reducer';
+import videoReducer from './video-reducer';
+// Combine Reducers
+const reducers = combineReducers({
+  rooms: roomReducer,
+  video: videoReducer,
+  audio: audioReducer
+});
+export default reducers;
